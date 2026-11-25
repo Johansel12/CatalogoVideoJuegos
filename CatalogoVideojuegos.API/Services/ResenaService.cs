@@ -7,6 +7,9 @@ namespace CatalogoVideojuegos.API.Services;
 
 public class ResenaService : IResenaService
 {
+    private const int PuntuacionMinima = 1;
+    private const int PuntuacionMaxima = 10;
+
     private readonly IRepositorio<Resena> _resenas;
     private readonly IRepositorio<Videojuego> _videojuegos;
 
@@ -28,6 +31,7 @@ public class ResenaService : IResenaService
     public ResenaDto Crear(ResenaGuardarDto dto)
     {
         ValidarVideojuego(dto.VideojuegoId!.Value);
+        ValidarPuntuacion(dto.Puntuacion!.Value);
 
         var resena = new Resena
         {
@@ -45,6 +49,7 @@ public class ResenaService : IResenaService
     {
         var resena = Buscar(id);
         ValidarVideojuego(dto.VideojuegoId!.Value);
+        ValidarPuntuacion(dto.Puntuacion!.Value);
 
         resena.VideojuegoId = dto.VideojuegoId.Value;
         resena.Autor = dto.Autor.Trim();
@@ -69,6 +74,17 @@ public class ResenaService : IResenaService
     {
         if (_videojuegos.ObtenerPorId(videojuegoId) is null)
             throw new ReglaNegocioException($"El videojuego con id {videojuegoId} no existe.");
+    }
+
+    /// <summary>
+    /// Hotfix: antes se aceptaban puntuaciones negativas o mayores a 10.
+    /// Se valida también aquí para proteger la regla aunque el DTO cambie.
+    /// </summary>
+    private static void ValidarPuntuacion(int puntuacion)
+    {
+        if (puntuacion < PuntuacionMinima || puntuacion > PuntuacionMaxima)
+            throw new ReglaNegocioException(
+                $"La puntuación debe estar entre {PuntuacionMinima} y {PuntuacionMaxima}.");
     }
 
     private ResenaDto ADto(Resena r) => new(

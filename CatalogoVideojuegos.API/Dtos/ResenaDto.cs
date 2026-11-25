@@ -27,6 +27,7 @@ public class ResenaGuardarDto
     public string Autor { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "La puntuación es obligatoria.")]
+    [Range(1, 10, ErrorMessage = "La puntuación debe estar entre 1 y 10.")]
     public int? Puntuacion { get; set; }
 
     [StringLength(500, ErrorMessage = "El comentario no puede superar los 500 caracteres.")]
