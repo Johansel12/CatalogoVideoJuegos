@@ -13,6 +13,7 @@ builder.Services.AddSingleton(typeof(IRepositorio<>), typeof(RepositorioJson<>))
 // Servicios de cada módulo
 // (cada rama feature/ registra aquí su servicio)
 builder.Services.AddScoped<IDesarrolladoraService, DesarrolladoraService>();
+builder.Services.AddScoped<IPlataformaService, PlataformaService>();
 
 var app = builder.Build();
 
