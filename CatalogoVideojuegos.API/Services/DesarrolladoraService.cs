@@ -8,10 +8,12 @@ namespace CatalogoVideojuegos.API.Services;
 public class DesarrolladoraService : IDesarrolladoraService
 {
     private readonly IRepositorio<Desarrolladora> _repositorio;
+    private readonly IRepositorio<Videojuego> _videojuegos;
 
-    public DesarrolladoraService(IRepositorio<Desarrolladora> repositorio)
+    public DesarrolladoraService(IRepositorio<Desarrolladora> repositorio, IRepositorio<Videojuego> videojuegos)
     {
         _repositorio = repositorio;
+        _videojuegos = videojuegos;
     }
 
     public IEnumerable<DesarrolladoraDto> ObtenerTodas() =>
@@ -51,6 +53,10 @@ public class DesarrolladoraService : IDesarrolladoraService
     public void Eliminar(int id)
     {
         Buscar(id);
+
+        if (_videojuegos.ObtenerTodos().Any(v => v.DesarrolladoraId == id))
+            throw new ReglaNegocioException("No se puede eliminar la desarrolladora porque tiene videojuegos asociados.");
+
         _repositorio.Eliminar(id);
     }
 

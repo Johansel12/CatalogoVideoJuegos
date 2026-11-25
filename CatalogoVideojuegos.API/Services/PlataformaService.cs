@@ -8,10 +8,12 @@ namespace CatalogoVideojuegos.API.Services;
 public class PlataformaService : IPlataformaService
 {
     private readonly IRepositorio<Plataforma> _repositorio;
+    private readonly IRepositorio<Videojuego> _videojuegos;
 
-    public PlataformaService(IRepositorio<Plataforma> repositorio)
+    public PlataformaService(IRepositorio<Plataforma> repositorio, IRepositorio<Videojuego> videojuegos)
     {
         _repositorio = repositorio;
+        _videojuegos = videojuegos;
     }
 
     public IEnumerable<PlataformaDto> ObtenerTodas() =>
@@ -51,6 +53,10 @@ public class PlataformaService : IPlataformaService
     public void Eliminar(int id)
     {
         Buscar(id);
+
+        if (_videojuegos.ObtenerTodos().Any(v => v.PlataformaId == id))
+            throw new ReglaNegocioException("No se puede eliminar la plataforma porque tiene videojuegos asociados.");
+
         _repositorio.Eliminar(id);
     }
 
