@@ -1,0 +1,125 @@
+:root {
+    --primario: #4f46e5;
+    --primario-oscuro: #3730a3;
+    --fondo: #f4f5fb;
+    --tarjeta: #ffffff;
+    --texto: #1f2937;
+    --suave: #6b7280;
+    --borde: #e5e7eb;
+    --error: #b91c1c;
+    --exito: #15803d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+header {
+    background: linear-gradient(135deg, var(--primario), var(--primario-oscuro));
+    color: #fff;
+    padding: 1.5rem 2rem;
+}
+
+header h1 { margin: 0 0 .25rem; font-size: 1.6rem; }
+header p { margin: 0; opacity: .85; }
+
+nav {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    padding: 1rem 2rem 0;
+}
+
+nav button {
+    border: 1px solid var(--borde);
+    background: var(--tarjeta);
+    padding: .55rem 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: .95rem;
+}
+
+nav button.activo {
+    background: var(--primario);
+    border-color: var(--primario);
+    color: #fff;
+}
+
+main {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem 2rem 2rem;
+    align-items: start;
+}
+
+@media (max-width: 860px) {
+    main { grid-template-columns: 1fr; }
+}
+
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    overflow-x: auto;
+}
+
+.tarjeta h2 { margin-top: 0; font-size: 1.15rem; }
+
+form label {
+    display: block;
+    font-size: .85rem;
+    color: var(--suave);
+    margin: .75rem 0 .25rem;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: .5rem .6rem;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font: inherit;
+}
+
+.acciones-form {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+button.principal, button.secundario, button.peligro, button.enlace {
+    padding: .5rem .9rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+button.principal { background: var(--primario); color: #fff; }
+button.secundario { background: var(--borde); color: var(--texto); }
+button.peligro { background: #fee2e2; color: var(--error); }
+button.enlace { background: #eef2ff; color: var(--primario); }
+
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { text-align: left; padding: .55rem .5rem; border-bottom: 1px solid var(--borde); }
+th { color: var(--suave); font-weight: 600; }
+td.acciones { white-space: nowrap; display: flex; gap: .35rem; }
+
+.mensaje { min-height: 1.2rem; font-size: .9rem; margin: .75rem 0 0; white-space: pre-line; }
+.mensaje.error { color: var(--error); }
+.mensaje.exito { color: var(--exito); }
+
+.vacio {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--suave);
+    padding: 3rem 1rem;
+}
+
+footer { text-align: center; color: var(--suave); font-size: .85rem; padding: 1rem; }

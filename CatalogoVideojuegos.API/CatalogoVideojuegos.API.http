@@ -1,0 +1,4 @@
+@host = http://localhost:5035
+
+### Estado de la API
+GET {{host}}/api/estado
