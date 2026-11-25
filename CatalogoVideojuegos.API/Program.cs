@@ -1,5 +1,6 @@
 using CatalogoVideojuegos.API.Data;
 using CatalogoVideojuegos.API.Middleware;
+using CatalogoVideojuegos.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddSingleton(typeof(IRepositorio<>), typeof(RepositorioJson<>))
 
 // Servicios de cada módulo
 // (cada rama feature/ registra aquí su servicio)
+builder.Services.AddScoped<IDesarrolladoraService, DesarrolladoraService>();
 
 var app = builder.Build();
 
