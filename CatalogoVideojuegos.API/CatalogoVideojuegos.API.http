@@ -28,3 +28,19 @@ Content-Type: application/json
   "fabricante": "Nintendo",
   "anioLanzamiento": 2017
 }
+
+### Videojuegos: listar
+GET {{host}}/api/videojuegos
+
+### Videojuegos: crear
+POST {{host}}/api/videojuegos
+Content-Type: application/json
+
+{
+  "titulo": "The Legend of Zelda: Tears of the Kingdom",
+  "genero": "Aventura",
+  "precio": 69.99,
+  "fechaLanzamiento": "2023-05-12",
+  "desarrolladoraId": 1,
+  "plataformaId": 1
+}
