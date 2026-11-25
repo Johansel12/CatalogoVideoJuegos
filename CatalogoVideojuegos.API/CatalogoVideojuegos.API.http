@@ -2,3 +2,16 @@
 
 ### Estado de la API
 GET {{host}}/api/estado
+
+### Desarrolladoras: listar
+GET {{host}}/api/desarrolladoras
+
+### Desarrolladoras: crear
+POST {{host}}/api/desarrolladoras
+Content-Type: application/json
+
+{
+  "nombre": "Nintendo",
+  "pais": "Japón",
+  "anioFundacion": 1889
+}
