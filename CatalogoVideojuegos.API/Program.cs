@@ -14,6 +14,7 @@ builder.Services.AddSingleton(typeof(IRepositorio<>), typeof(RepositorioJson<>))
 // (cada rama feature/ registra aquí su servicio)
 builder.Services.AddScoped<IDesarrolladoraService, DesarrolladoraService>();
 builder.Services.AddScoped<IPlataformaService, PlataformaService>();
+builder.Services.AddScoped<IVideojuegoService, VideojuegoService>();
 
 var app = builder.Build();
 

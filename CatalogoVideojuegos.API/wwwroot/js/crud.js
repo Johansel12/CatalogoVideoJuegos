@@ -128,7 +128,7 @@ async function guardar(evento, modulo) {
         const valor = formulario.elements[campo.nombre].value.trim();
         if (valor === '') {
             datos[campo.nombre] = null;
-        } else if (campo.tipo === 'number' || campo.tipo === 'select') {
+        } else if (campo.tipo === 'number' || campo.numerico) {
             datos[campo.nombre] = Number(valor);
         } else {
             datos[campo.nombre] = valor;
