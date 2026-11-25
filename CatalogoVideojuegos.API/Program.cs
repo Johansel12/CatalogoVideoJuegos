@@ -15,6 +15,7 @@ builder.Services.AddSingleton(typeof(IRepositorio<>), typeof(RepositorioJson<>))
 builder.Services.AddScoped<IDesarrolladoraService, DesarrolladoraService>();
 builder.Services.AddScoped<IPlataformaService, PlataformaService>();
 builder.Services.AddScoped<IVideojuegoService, VideojuegoService>();
+builder.Services.AddScoped<IResenaService, ResenaService>();
 
 var app = builder.Build();
 
