@@ -1,4 +1,4 @@
-# 🎮 Catálogo de Videojuegos
+# Catálogo de Videojuegos
 
 Proyecto CRUD desarrollado en **ASP.NET Core 8 (C#)** para la Tarea 3 de Programación III (ITLA),
 aplicando la metodología **Git Flow**.
