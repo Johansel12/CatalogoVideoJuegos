@@ -44,3 +44,17 @@ Content-Type: application/json
   "desarrolladoraId": 1,
   "plataformaId": 1
 }
+
+### Reseñas: listar (opcionalmente ?videojuegoId=1)
+GET {{host}}/api/resenas
+
+### Reseñas: crear
+POST {{host}}/api/resenas
+Content-Type: application/json
+
+{
+  "videojuegoId": 1,
+  "autor": "Johansel",
+  "puntuacion": 9,
+  "comentario": "Excelente exploración y mundo abierto."
+}
