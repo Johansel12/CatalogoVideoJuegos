@@ -15,3 +15,16 @@ Content-Type: application/json
   "pais": "Japón",
   "anioFundacion": 1889
 }
+
+### Plataformas: listar
+GET {{host}}/api/plataformas
+
+### Plataformas: crear
+POST {{host}}/api/plataformas
+Content-Type: application/json
+
+{
+  "nombre": "Nintendo Switch",
+  "fabricante": "Nintendo",
+  "anioLanzamiento": 2017
+}
