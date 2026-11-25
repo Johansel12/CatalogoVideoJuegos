@@ -11,7 +11,7 @@ registrarModulo({
             }
         },
         { nombre: 'autor', etiqueta: 'Autor', tipo: 'text' },
-        { nombre: 'puntuacion', etiqueta: 'Puntuación (1 a 10)', tipo: 'number' },
+        { nombre: 'puntuacion', etiqueta: 'Puntuación (1 a 10)', tipo: 'number', min: 1, max: 10, paso: 1 },
         { nombre: 'comentario', etiqueta: 'Comentario', tipo: 'textarea' }
     ],
     columnas: [
