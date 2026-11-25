@@ -10,15 +10,18 @@ public class VideojuegoService : IVideojuegoService
     private readonly IRepositorio<Videojuego> _videojuegos;
     private readonly IRepositorio<Desarrolladora> _desarrolladoras;
     private readonly IRepositorio<Plataforma> _plataformas;
+    private readonly IRepositorio<Resena> _resenas;
 
     public VideojuegoService(
         IRepositorio<Videojuego> videojuegos,
         IRepositorio<Desarrolladora> desarrolladoras,
-        IRepositorio<Plataforma> plataformas)
+        IRepositorio<Plataforma> plataformas,
+        IRepositorio<Resena> resenas)
     {
         _videojuegos = videojuegos;
         _desarrolladoras = desarrolladoras;
         _plataformas = plataformas;
+        _resenas = resenas;
     }
 
     public IEnumerable<VideojuegoDto> ObtenerTodos() =>
@@ -52,6 +55,10 @@ public class VideojuegoService : IVideojuegoService
     public void Eliminar(int id)
     {
         Buscar(id);
+
+        if (_resenas.ObtenerTodos().Any(r => r.VideojuegoId == id))
+            throw new ReglaNegocioException("No se puede eliminar el videojuego porque tiene reseñas asociadas.");
+
         _videojuegos.Eliminar(id);
     }
 
